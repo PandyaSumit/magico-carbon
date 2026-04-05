@@ -147,9 +147,6 @@ process ensures eco-friendly practices with net zero wastage`,
   return (
     <motion.section
       className="relative overflow-hidden bg-white"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
       variants={staggerContainer}
     >
       {/* Hero Banner with Image Background */}

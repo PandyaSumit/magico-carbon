@@ -79,7 +79,7 @@ export function Navbar() {
 
           {/* CTA Button */}
           <div className="hidden md:flex gap-4">
-            <button className="btn-secondary">Request Quote</button>
+            <button className={`${scrolled ? "btn-primary" : "text-white border-white! bg-transparent! border btn-primary "}`}>Request Quote</button>
           </div>
 
           {/* Mobile Menu Button */}
