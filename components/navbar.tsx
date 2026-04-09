@@ -2,12 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 export function Navbar() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const solidNav = scrolled || pathname !== "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,13 +28,8 @@ export function Navbar() {
   return (
     <nav
       className={`fixed w-full top-0 z-50 transition-all duration-600 ${
-        scrolled
-          ? "bg-[#ffffff] backdrop-blur-[15px]  shadow-2xl"
-          : "bg-transparent "
-      }
-      
-      
-      `}
+        solidNav ? "bg-[#ffffff] backdrop-blur-[15px] shadow-2xl" : "bg-transparent "
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -52,26 +50,26 @@ export function Navbar() {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
             <Link
-              href="#products"
-              className={` ${scrolled ? "hover:text-[#1000cc] " : "hover:text-[#1000cc] text-white"} transition-colors font-medium`}
+              href="/#products"
+              className={`${solidNav ? "text-slate-700 hover:text-[#1000cc]" : "text-white hover:text-[#1000cc]"} transition-colors font-medium`}
             >
               Products
             </Link>
             <Link
-              href="#applications"
-              className={`text-slate-700 ${scrolled ? "hover:text-[#1000cc]" : "hover:text-[#1000cc] text-white"} transition-colors font-medium`}
+              href="/#applications"
+              className={`${solidNav ? "text-slate-700 hover:text-[#1000cc]" : "text-white hover:text-[#1000cc]"} transition-colors font-medium`}
             >
               Applications
             </Link>
             <Link
-              href="#about"
-              className={`text-slate-700 ${scrolled ? "hover:text-[#1000cc]" : "hover:text-[#1000cc] text-white"} transition-colors font-medium`}
+              href="/#about"
+              className={`${solidNav ? "text-slate-700 hover:text-[#1000cc]" : "text-white hover:text-[#1000cc]"} transition-colors font-medium`}
             >
               About
             </Link>
             <Link
-              href="#contact"
-              className={`text-slate-700 ${scrolled ? "hover:text-[#1000cc]" : "hover:text-[#1000cc] text-white"} transition-colors font-medium`}
+              href="/#contact"
+              className={`${solidNav ? "text-slate-700 hover:text-[#1000cc]" : "text-white hover:text-[#1000cc]"} transition-colors font-medium`}
             >
               Contact
             </Link>
@@ -79,12 +77,14 @@ export function Navbar() {
 
           {/* CTA Button */}
           <div className="hidden md:flex gap-4">
-            <button className={`${scrolled ? "btn-primary" : "text-white border-white! bg-transparent! border btn-primary "}`}>Request Quote</button>
+            <button className={`${solidNav ? "btn-primary" : "text-white border-white! bg-transparent! border btn-primary "}`}>
+              Request Quote
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2"
+            className={`md:hidden p-2 ${solidNav ? "text-slate-900" : "text-white"}`}
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -96,28 +96,28 @@ export function Navbar() {
         {isOpen && (
           <div className="md:hidden border-t border-slate-200 py-4 space-y-3">
             <Link
-              href="#products"
+              href="/#products"
               className="block text-slate-700 hover:text-[#1000cc] transition-colors font-medium py-2"
               onClick={() => setIsOpen(false)}
             >
               Products
             </Link>
             <Link
-              href="#applications"
+              href="/#applications"
               className="block text-slate-700 hover:text-[#1000cc] transition-colors font-medium py-2"
               onClick={() => setIsOpen(false)}
             >
               Applications
             </Link>
             <Link
-              href="#about"
+              href="/#about"
               className="block text-slate-700 hover:text-[#1000cc] transition-colors font-medium py-2"
               onClick={() => setIsOpen(false)}
             >
               About
             </Link>
             <Link
-              href="#contact"
+              href="/#contact"
               className="block text-slate-700 hover:text-[#1000cc] transition-colors font-medium py-2"
               onClick={() => setIsOpen(false)}
             >

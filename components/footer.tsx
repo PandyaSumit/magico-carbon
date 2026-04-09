@@ -36,7 +36,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  href="#products"
+                  href="/products/gac"
                   className="text-slate-400 hover:text-[#1000cc] transition-colors"
                 >
                   Granular (GAC)
@@ -44,7 +44,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="#products"
+                  href="/products/pac"
                   className="text-slate-400 hover:text-[#1000cc] transition-colors"
                 >
                   Powdered (PAC)
@@ -52,7 +52,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="#products"
+                  href="/products/pelletized"
                   className="text-slate-400 hover:text-[#1000cc] transition-colors"
                 >
                   Pelletized (EAC)

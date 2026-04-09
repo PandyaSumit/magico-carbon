@@ -78,13 +78,14 @@ const capitalize = (value: string) =>
     .join(" ");
 
 type Props = {
-  params?: { region?: string };
+  params: Promise<{ region?: string }>;
 };
 
 export const dynamicParams = true;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const regionParam = params?.region ?? "texas";
+  const { region } = await params;
+  const regionParam = region ?? "texas";
   const key = regionParam.toLowerCase();
   const data = regionCatalog[key] ?? regionCatalog["texas"];
 
@@ -96,8 +97,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function RegionPage({ params }: Props) {
-  const regionParam = params?.region ?? "texas";
+export default async function RegionPage({ params }: Props) {
+  const { region } = await params;
+  const regionParam = region ?? "texas";
   const key = regionParam.toLowerCase();
   const data = regionCatalog[key] ?? regionCatalog["texas"];
   const regionLabel = capitalize(regionParam);
