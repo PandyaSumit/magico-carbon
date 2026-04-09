@@ -26,7 +26,7 @@ export default function Home() {
       <main>
         <Navbar />
         <Hero />
-        <HeroQuickStats fadeInUp={fadeInUp} />
+        {/* <HeroQuickStats fadeInUp={fadeInUp} /> */}
         <HeroAboutSection fadeInUp={fadeInUp} />
         <HeroProductRangeSection fadeInUp={fadeInUp} />
         <HeroApplicationsSection fadeInUp={fadeInUp} />
