@@ -15,8 +15,8 @@ export function HeroMainBanner({ fadeInUp }: Props) {
 
   return (
     <motion.div
-      className="relative min-h-[calc(100svh-4rem)] overflow-hidden"
-      //   className="relative min-h-[calc(100svh-6rem)] overflow-hidden bg-[#030712]"
+      className="relative min-h-[calc(100svh-4rem-env(safe-area-inset-top))] overflow-hidden"
+      //   className="relative min-h-[calc(100svh-4rem-env(safe-area-inset-top))] overflow-hidden bg-[#030712]"
       variants={fadeInUp}
     >
       <Image
@@ -31,21 +31,21 @@ export function HeroMainBanner({ fadeInUp }: Props) {
 
       {/* Main centered content */}
       <motion.div
-        className="relative z-10 min-h-[calc(100svh-6rem)] flex items-center text-center px-4 sm:px-6 py-16 sm:py-20"
+        className="relative z-10 min-h-[calc(100svh-4rem-env(safe-area-inset-top))] flex flex-col text-center px-5 sm:px-8 py-10 sm:py-20 max-sm:items-stretch max-sm:justify-start max-sm:pt-[max(6.5rem,calc(env(safe-area-inset-top)+5.25rem))] max-sm:pb-14 sm:items-center sm:justify-center"
         variants={fadeInUp}
       >
         <div className="w-full max-w-5xl mx-auto flex flex-col items-center">
           <motion.p
-            className="inline-flex items-center gap-3 text-[10px] sm:text-[11px] tracking-[0.3em] uppercase text-white/50 mb-7 sm:mb-8"
+            className="inline-flex items-center gap-2 sm:gap-3 text-[10px] sm:text-[11px] tracking-[0.2em] sm:tracking-[0.3em] uppercase text-white/65 mb-6 sm:mb-8 leading-snug px-1"
             variants={fadeInUp}
           >
-            <span className="h-px w-8 bg-white/20" />
+            <span className="hidden sm:block h-px w-8 bg-white/20" />
             Premium Activated Carbon Solutions
-            <span className="h-px w-8 bg-white/20" />
+            <span className="hidden sm:block h-px w-8 bg-white/20" />
           </motion.p>
 
           <motion.h1
-            className="font-bold text-white leading-[0.94] tracking-tight text-[2.2rem] sm:text-[3.1rem] md:text-[4.2rem] lg:text-[5rem]"
+            className="font-bold text-white leading-[1.02] sm:leading-[0.95] tracking-tight text-[2rem] sm:text-[3.1rem] md:text-[4.2rem] lg:text-[5rem] px-0.5"
             variants={fadeInUp}
           >
             WORLD&apos;S FINEST
@@ -57,13 +57,13 @@ export function HeroMainBanner({ fadeInUp }: Props) {
           </motion.h1>
 
           <motion.p
-            className="mt-6 sm:mt-7 text-base sm:text-lg text-white/85 font-medium max-w-2xl leading-relaxed"
+            className="mt-6 sm:mt-7 text-base sm:text-lg text-white/90 font-medium max-w-[22rem] sm:max-w-2xl leading-relaxed"
             variants={fadeInUp}
           >
             Quality Sourcing · Steam Activated · Reliable Partnerships
           </motion.p>
           <motion.p
-            className="mt-3 text-sm sm:text-base text-white/75 max-w-2xl leading-relaxed"
+            className="mt-3.5 sm:mt-3 text-sm sm:text-base text-white/80 max-w-[22rem] sm:max-w-2xl leading-relaxed"
             variants={fadeInUp}
           >
             High-performance activated carbon grades for purification, refining,
@@ -72,37 +72,39 @@ export function HeroMainBanner({ fadeInUp }: Props) {
           </motion.p>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-3 mt-7 sm:mt-8 justify-center w-full sm:w-auto max-w-md sm:max-w-none"
+            className="flex flex-col sm:flex-row gap-3.5 sm:gap-3 mt-8 sm:mt-9 justify-center w-full sm:w-auto max-w-md sm:max-w-none"
             variants={fadeInUp}
           >
             <Link
               href="/#contact"
-              className="inline-flex items-center justify-center gap-2 px-8 h-12 bg-[#4f6ef7] text-white text-sm font-semibold rounded-lg hover:bg-[#3b5de7] transition-all"
+              className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 min-h-12 sm:h-12 py-3 sm:py-0 bg-[#4f6ef7] text-white text-[15px] sm:text-sm font-semibold rounded-lg hover:bg-[#3b5de7] transition-all"
             >
-              Contact Us <ArrowRight className="w-4 h-4" />
+              Contact Us <ArrowRight className="w-4 h-4 shrink-0" />
             </Link>
             <Link
               href="/#about"
-              className="inline-flex items-center justify-center px-8 h-12 text-white/70 text-sm border border-white/20 rounded-lg hover:text-white hover:border-white/40 transition-all"
+              className="inline-flex items-center justify-center px-6 sm:px-8 min-h-12 sm:h-12 py-3 sm:py-0 text-white/85 text-[15px] sm:text-sm border border-white/30 rounded-lg hover:text-white hover:border-white/45 transition-all"
             >
               Know More
             </Link>
           </motion.div>
 
           <motion.div
-            className="mt-7 sm:mt-8 flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-xs sm:text-sm text-white/70 text-center"
+            className="mt-8 sm:mt-9 flex flex-col sm:flex-row items-center gap-2.5 sm:gap-6 text-xs sm:text-sm text-white/75 text-center px-1"
             variants={fadeInUp}
           >
             <span>+91 8010223355 · +1 (214) 779-6566</span>
             <span className="hidden sm:block h-3 w-px bg-white/20" />
-            <span>sales@magicotradelinks.com</span>
+            <span className="break-all sm:break-normal">
+              sales@magicotradelinks.com
+            </span>
           </motion.div>
         </div>
       </motion.div>
 
       {/* Bottom stats bar */}
       <motion.div
-        className="relative z-10 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-white/10"
+        className="relative z-10 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-white/10 pb-[env(safe-area-inset-bottom)]"
         variants={fadeInUp}
       >
         {stats.map((s, i) => (
