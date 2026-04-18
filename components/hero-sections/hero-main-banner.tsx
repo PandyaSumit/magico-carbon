@@ -72,7 +72,7 @@ export function HeroMainBanner({ fadeInUp }: Props) {
           </motion.p>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-3.5 sm:gap-3 mt-8 sm:mt-9 justify-center w-full sm:w-auto max-w-md sm:max-w-none"
+            className="flex justify-center w-full mt-8 sm:mt-9"
             variants={fadeInUp}
           >
             <Link
@@ -81,23 +81,6 @@ export function HeroMainBanner({ fadeInUp }: Props) {
             >
               Contact Us <ArrowRight className="w-4 h-4 shrink-0" />
             </Link>
-            <Link
-              href="/#about"
-              className="inline-flex items-center justify-center px-6 sm:px-8 min-h-12 sm:h-12 py-3 sm:py-0 text-white/85 text-[15px] sm:text-sm border border-white/30 rounded-lg hover:text-white hover:border-white/45 transition-all"
-            >
-              Know More
-            </Link>
-          </motion.div>
-
-          <motion.div
-            className="mt-8 sm:mt-9 flex flex-col sm:flex-row items-center gap-2.5 sm:gap-6 text-xs sm:text-sm text-white/75 text-center px-1"
-            variants={fadeInUp}
-          >
-            <span>+91 8010223355 · +1 (214) 779-6566</span>
-            <span className="hidden sm:block h-3 w-px bg-white/20" />
-            <span className="break-all sm:break-normal">
-              sales@magicotradelinks.com
-            </span>
           </motion.div>
         </div>
       </motion.div>

@@ -17,9 +17,11 @@ export function Hero() {
   };
 
   return (
-    <motion.section className="relative overflow-hidden bg-white" variants={staggerContainer}>
+    <motion.section
+      className="relative overflow-hidden bg-white"
+      variants={staggerContainer}
+    >
       <HeroMainBanner fadeInUp={fadeInUp} />
     </motion.section>
   );
 }
-

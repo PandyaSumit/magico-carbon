@@ -72,11 +72,6 @@ export function Products() {
 
               {/* Content */}
               <div className="flex flex-col gap-2.5 p-5">
-                {/* Category */}
-                <p className="text-[10px] uppercase tracking-widest text-slate-400">
-                  {product.categoryLabel}
-                </p>
-
                 {/* Title */}
                 <h3 className="text-lg font-semibold text-slate-900 leading-snug transition-colors group-hover:text-[#1000cc]">
                   {product.title}
@@ -111,8 +106,8 @@ export function Products() {
                 Bag Quality, Printing & Shipment
               </h3>
               <p className="mt-4 text-sm leading-relaxed text-slate-300 sm:text-[15px]">
-                Packaging details follow the brochure exactly so your orders ship
-                safely while reflecting your brand.
+                Packaging details follow the brochure exactly so your orders
+                ship safely while reflecting your brand.
               </p>
               <div className="mt-8 hidden gap-2 lg:flex lg:flex-col">
                 {packagingSections.map((s, i) => (
@@ -138,9 +133,6 @@ export function Products() {
                   <details
                     key={section.id}
                     className="group bg-white open:bg-slate-50/50"
-                    {...(section.id === "bag-quality"
-                      ? { defaultOpen: true }
-                      : {})}
                   >
                     <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 text-left [&::-webkit-details-marker]:hidden">
                       <span>

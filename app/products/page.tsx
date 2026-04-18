@@ -41,7 +41,6 @@ export default function ProductsIndexPage() {
                   />
                 </div>
                 <div className="flex flex-1 flex-col p-5 sm:p-6 gap-3">
-                  <p className="text-[11px] sm:text-xs uppercase tracking-[0.35em] text-[#1000cc]">{product.categoryLabel}</p>
                   <h2 className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug group-hover:text-[#1000cc] transition-colors">
                     {product.title}
                   </h2>

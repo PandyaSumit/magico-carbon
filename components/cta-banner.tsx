@@ -1,4 +1,4 @@
-import { ArrowRight, Download } from 'lucide-react';
+import { ArrowRight, Download } from "lucide-react";
 
 export function CTABanner() {
   return (
@@ -17,7 +17,8 @@ export function CTABanner() {
               Ready to Transform Your Operations?
             </h3>
             <p className="text-white/90 text-lg mb-6 leading-relaxed">
-              Experience the Magico Carbon difference with premium activated carbon, expert technical support, and reliable global supply.
+              Experience the Magico Carbon difference with premium activated
+              carbon, expert technical support, and reliable global supply.
             </p>
             <ul className="space-y-3 mb-8">
               <li className="flex items-center gap-3">

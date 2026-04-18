@@ -5,7 +5,11 @@ import { notFound, permanentRedirect } from "next/navigation";
 import { ChevronRight } from "lucide-react";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { getAllProductSlugs, getProductByParam, PRODUCTS } from "@/lib/products";
+import {
+  getAllProductSlugs,
+  getProductByParam,
+  PRODUCTS,
+} from "@/lib/products";
 
 type Props = {
   params: Promise<{ slug?: string }>;
@@ -120,7 +124,8 @@ export default async function ProductDetailPage({ params }: Props) {
                     Technical overview
                   </h2>
                   <p className="mt-4 text-sm leading-relaxed text-slate-500 lg:max-w-[220px]">
-                    Application notes, feed compatibility, and grade rationale in one place.
+                    Application notes, feed compatibility, and grade rationale
+                    in one place.
                   </p>
                 </div>
                 <div className="mt-10 border-l-0 border-slate-200 lg:col-span-8 lg:mt-0 lg:border-l lg:pl-12">
@@ -148,7 +153,8 @@ export default async function ProductDetailPage({ params }: Props) {
                         {sizesTitle}
                       </h2>
                       <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
-                        Standard catalogue cuts. Custom fractions, washing, and packaging available.
+                        Standard catalogue cuts. Custom fractions, washing, and
+                        packaging available.
                       </p>
                     </header>
                     <div className="lg:col-span-8">
@@ -189,7 +195,11 @@ export default async function ProductDetailPage({ params }: Props) {
 
                 {product.features && product.features.length > 0 ? (
                   <div
-                    className={product.sizes?.length ? "mt-20 border-t border-slate-200 pt-20" : ""}
+                    className={
+                      product.sizes?.length
+                        ? "mt-20 border-t border-slate-200 pt-20"
+                        : ""
+                    }
                   >
                     <header className="mb-10 max-w-2xl lg:mb-14">
                       <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#1000cc]">
@@ -202,7 +212,8 @@ export default async function ProductDetailPage({ params }: Props) {
                         {featuresTitle}
                       </h2>
                       <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
-                        Engineering, service, and accountability aligned to your process.
+                        Engineering, service, and accountability aligned to your
+                        process.
                       </p>
                     </header>
                     <div className="grid gap-5 sm:gap-6 md:grid-cols-2">
@@ -211,7 +222,10 @@ export default async function ProductDetailPage({ params }: Props) {
                           key={`${index}-${feature.slice(0, 20)}`}
                           className="relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-6 sm:p-7 shadow-[0_1px_3px_rgba(15,23,42,0.04)] transition-shadow hover:shadow-md"
                         >
-                          <span className="absolute left-0 top-0 h-full w-1 bg-[#1000cc]" aria-hidden />
+                          <span
+                            className="absolute left-0 top-0 h-full w-1 bg-[#1000cc]"
+                            aria-hidden
+                          />
                           <span className="text-[10px] font-bold tabular-nums text-slate-300">
                             {String(index + 1).padStart(2, "0")}
                           </span>
@@ -237,7 +251,8 @@ export default async function ProductDetailPage({ params }: Props) {
                   Pricing, COA, or delivery for this product?
                 </h2>
                 <p className="text-sm leading-relaxed text-slate-400 sm:text-base">
-                  Send your application and target spec—we&apos;ll respond with availability and options.
+                  Send your application and target spec—we&apos;ll respond with
+                  availability and options.
                 </p>
               </div>
               <Link
@@ -253,7 +268,9 @@ export default async function ProductDetailPage({ params }: Props) {
             <section className="border-t border-slate-200 bg-white">
               <div className="mx-auto max-w-6xl px-5 sm:px-8 py-14 sm:py-16">
                 <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-                  <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">Other products</h2>
+                  <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">
+                    Other products
+                  </h2>
                   <Link
                     href="/products"
                     className="text-sm font-semibold text-[#1000cc] hover:underline"
