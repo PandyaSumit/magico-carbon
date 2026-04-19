@@ -6,14 +6,51 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { PRODUCTS } from "@/lib/products";
 
+const SITE_URL = "https://www.magicocarbon.com";
+
 export const metadata: Metadata = {
-  title: "Products | Magico Carbon",
-  description: "Granular, powdered, and pelletized activated carbon grades with specifications and sizing.",
+  title: "Activated Carbon Products | Magico Carbon",
+  description:
+    "Browse granular, powdered, and pelletized activated carbon grades with technical details, use-case fit, and specifications.",
+  keywords: [
+    "activated carbon products",
+    "granular activated carbon",
+    "powdered activated carbon",
+    "pelletized activated carbon",
+    "coconut shell activated carbon",
+  ],
+  alternates: {
+    canonical: "/products",
+  },
+  openGraph: {
+    title: "Activated Carbon Products | Magico Carbon",
+    description:
+      "Explore Magico Carbon product grades with detailed specifications and application insights.",
+    url: `${SITE_URL}/products`,
+    type: "website",
+    siteName: "Magico Carbon",
+  },
 };
 
 export default function ProductsIndexPage() {
+  const listSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Activated Carbon Products",
+    itemListElement: PRODUCTS.map((product, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `${SITE_URL}/products/${product.slug}`,
+      name: product.title,
+    })),
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(listSchema) }}
+      />
       <Navbar />
       <main className="flex-1 pt-20 pb-16 md:pb-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">

@@ -1,5 +1,4 @@
 "use client";
-
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
 import { HeroQuickStats } from "@/components/hero-sections/hero-quick-stats";

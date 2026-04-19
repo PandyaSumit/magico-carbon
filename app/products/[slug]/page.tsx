@@ -15,6 +15,8 @@ type Props = {
   params: Promise<{ slug?: string }>;
 };
 
+const SITE_URL = "https://www.magicocarbon.com";
+
 export const dynamicParams = true;
 
 export function generateStaticParams() {
@@ -26,14 +28,48 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = slugParam ?? "";
   const product = getProductByParam(slug);
   if (!product) {
-    return { title: "Product | Magico Carbon" };
+    return {
+      title: "Product | Magico Carbon",
+      robots: {
+        index: false,
+        follow: true,
+      },
+    };
   }
+  const canonicalUrl = `/products/${product.slug}`;
+  const keywordBase = product.title.toLowerCase();
   return {
     title: `${product.title} | Magico Carbon`,
-    description: product.excerpt,
+    description: `${product.excerpt} Get specifications, use cases, and supply support from Magico Carbon.`,
+    keywords: [
+      `${keywordBase} supplier`,
+      `${keywordBase} manufacturer`,
+      `${product.categoryLabel} applications`,
+      `${product.categoryLabel} specifications`,
+      "activated carbon supplier",
+      "coconut shell activated carbon",
+    ],
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: `${product.title} | Magico Carbon`,
-      description: product.excerpt,
+      description: `${product.excerpt} Explore technical details and request a quote.`,
+      url: `${SITE_URL}${canonicalUrl}`,
+      type: "article",
+      siteName: "Magico Carbon",
+      images: [
+        {
+          url: product.image,
+          alt: product.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${product.title} | Magico Carbon`,
+      description: `${product.excerpt} Explore specs and applications.`,
+      images: [product.image],
     },
   };
 }
@@ -54,9 +90,65 @@ export default async function ProductDetailPage({ params }: Props) {
   const featuresTitle = product.featuresSectionTitle ?? "Features & Benefits";
   const related = PRODUCTS.filter((p) => p.slug !== product.slug);
   const hasSpecs = Boolean(product.sizes?.length || product.features?.length);
+  const pageUrl = `${SITE_URL}/products/${product.slug}`;
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Product",
+        name: product.title,
+        description: product.summary,
+        image: `${SITE_URL}${product.image}`,
+        category: product.categoryLabel,
+        brand: {
+          "@type": "Brand",
+          name: "Magico Carbon",
+        },
+        manufacturer: {
+          "@type": "Organization",
+          name: "Magico Carbon",
+          url: SITE_URL,
+        },
+        url: pageUrl,
+      },
+      {
+        "@type": "WebPage",
+        name: `${product.title} | Magico Carbon`,
+        url: pageUrl,
+        description: product.excerpt,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: SITE_URL,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Products",
+            item: `${SITE_URL}/products`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: product.title,
+            item: pageUrl,
+          },
+        ],
+      },
+    ],
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-[#f8f9fb] text-slate-900 font-sans antialiased">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
       <Navbar />
 
       <main className="pt-20">
